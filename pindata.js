@@ -1,4 +1,5 @@
-﻿var vPinData= {
+﻿var vPinData = [];
+var vPinData1= {
         "Pins": [
             {
 		"deviceid" : "0",
