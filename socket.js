@@ -54,7 +54,7 @@ function AddAlert(data) {
                 var newData = new PinData();
                 newData.id = data.deviceId;
                 newData.pin = pin;
-                pinData.add();
+                pinData.push(newData);
                 map.markers.add(pin);
             }
 
@@ -81,5 +81,5 @@ function AddAlert(data) {
             break;
     }
 
-    $("#tblStatus").append("<tr class='" + className + "'><td>" + data.name + "</td><td>" + data.status + "</td><td>" + data.text + "</td></tr>");
+    $("#tblStatus").prepend("<tr class='" + className + "'><td><strong>" + data.name + "</strong></td><td><strong>" + data.status + "</strong></td><td><strong>" + data.text + "</strong></td></tr>");
 }
