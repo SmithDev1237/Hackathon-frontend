@@ -2,6 +2,10 @@
     width: 50%;
     float: left;
 }
+.quarter{
+    widows: 25%;
+    float:left;
+}
 
 .green {
     color: green;

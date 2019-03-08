@@ -20,8 +20,8 @@
         <script type="text/javascript" id="pindata" src="pindata.js"></script>
         <script type="text/javascript" src="socket.js"></script>
     </div>
-    <div class="half">
-        <h2>Status</h2>        
+    <div class="quarter">
+        <h2>Live Feed</h2>        
         <div id="divStatus">
             <table class="table table-striped">
                 <thead class="thead-dark">
@@ -41,6 +41,26 @@
         </div>
         <p>Connection to Socket Server: <span id="spnStatus"></span></p>
     </div>
+
+    <div class="quarter">
+            <h2>Tripped Alerts</h2>        
+            <div>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Option</th>                           
+                        </tr>
+                    </thead>
+                    <tbody id="tbltripped">
+    
+                    </tbody>
+                    <tfoot>
+    
+                    </tfoot>
+                </table>
+            </div>            
+        </div>
 
 
     <script type='text/javascript'>

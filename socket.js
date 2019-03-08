@@ -18,8 +18,8 @@ function PinData() {
 var pinData = [];
 
 socket.on('alerts', (alert) => {
-    console.log(alert);
-    var data = JSON.parse(alert);
+    var data = JSON.parse(alert);    
+    console.log(alert);    
     AddAlert(data);
 });
 
@@ -56,6 +56,9 @@ function AddAlert(data) {
                 newData.pin = pin;
                 pinData.push(newData);
                 map.markers.add(pin);
+
+
+                $("#tbltripped").prepend("<tr><td><strong>" + data.name + "</strong></td><td><a href='#' onclick='ClearAlert(\"" + data.deviceId + "\", this)'>Clear Alert</a></td></tr>");
             }
 
             break;
@@ -69,17 +72,29 @@ function AddAlert(data) {
             //     pixelOffset: [5, -18],
             //     name: data.name
             // })
-            var found = false;
-            for (var i = 0; i < pinData.length; i++) {
 
-                if (pinData[i].id == data.deviceId) {
-                    map.markers.remove(pinData[i].pin);
-                    pinData.splice(i);
-                    break;
-                }
-            }
+            // for (var i = 0; i < pinData.length; i++) {
+
+            //     if (pinData[i].id == data.deviceId) {
+            //         map.markers.remove(pinData[i].pin);
+            //         pinData.splice(i);
+            //         break;
+            //     }
+            // }
             break;
     }
 
     $("#tblStatus").prepend("<tr class='" + className + "'><td><strong>" + data.name + "</strong></td><td><strong>" + data.status + "</strong></td><td><strong>" + data.text + "</strong></td></tr>");
+}
+
+function ClearAlert(deviceId, ele) {
+    for (var i = 0; i < pinData.length; i++) {
+
+        if (pinData[i].id == deviceId) {
+            $(ele).parent().parent().remove();
+            map.markers.remove(pinData[i].pin);
+            pinData.splice(i);            
+            break;
+        }
+    }
 }
