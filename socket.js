@@ -3,11 +3,19 @@ $("#spnStatus").addClass("red");
 $("#spnStatus").removeClass("green");
 var socket = io('http://127.0.0.1:8080')
 // alerts
-socket.on('connect', (socket) => {
+socket.on('connect', () => {
     //let token = socket.handshake.query.token;
     $("#spnStatus").html("Up");
     $("#spnStatus").addClass("green");
     $("#spnStatus").removeClass("red");
+
+    socket.on('alerts', (alert) => {
+        var data = JSON.parse(alert);   
+
+        console.log(alert);    
+        AddAlert(data);
+    });
+
 });
 
 function PinData() {
@@ -16,12 +24,6 @@ function PinData() {
 }
 
 var pinData = [];
-
-socket.on('alerts', (alert) => {
-    var data = JSON.parse(alert);    
-    console.log(alert);    
-    AddAlert(data);
-});
 
 function AddAlert(data) {
     var className = "green";
