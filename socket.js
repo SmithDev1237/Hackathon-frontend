@@ -20,15 +20,17 @@ var pinData = [];
 socket.on('alerts', (alert) => {
     console.log(alert);
     var data = JSON.parse(alert);
-    var className = "green";
-    //{"deviceId":2,"lat":52.175741,"long":-3.104488,"name":"Alarm 2","status":"Ok","text":"non-person object has been spotted."}
+    AddAlert(data);
+});
 
+function AddAlert(data) {
+    var className = "green";
 
     switch (data.status) {
 
         case "Error":
 
-        className = "red";
+            className = "red";
             var pinPosition = [data.long, data.lat];
             var pin = new atlas.HtmlMarker({
                 htmlContent: "<div><div class='pin bounce'></div><div class='pulse'></div><span class='markerName'>" + data.name + "</span></div>",
@@ -45,15 +47,14 @@ socket.on('alerts', (alert) => {
                     break;
                 }
             }
-           
+
 
             if (found == false) {
 
                 var newData = new PinData();
                 newData.id = data.deviceId;
                 newData.pin = pin;
-                pinData.add()
-
+                pinData.add();
                 map.markers.add(pin);
             }
 
@@ -61,6 +62,13 @@ socket.on('alerts', (alert) => {
 
         case "Ok":
 
+            // var pinPosition = [data.long, data.lat];
+            // var pin = new atlas.HtmlMarker({
+            //     htmlContent: "<div><div class='pinGreen bounce'></div><div class='pulseGreen'></div><span class='markerNameGreen'>" + data.name + "</span></div>",
+            //     position: pinPosition,
+            //     pixelOffset: [5, -18],
+            //     name: data.name
+            // })
             var found = false;
             for (var i = 0; i < pinData.length; i++) {
 
@@ -74,4 +82,4 @@ socket.on('alerts', (alert) => {
     }
 
     $("#tblStatus").append("<tr class='" + className + "'><td>" + data.name + "</td><td>" + data.status + "</td><td>" + data.text + "</td></tr>");
-});
+}

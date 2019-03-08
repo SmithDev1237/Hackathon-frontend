@@ -39,7 +39,7 @@
                 </tfoot>
             </table>
         </div>
-        <p>Connected to Socket Server: <span id="spnStatus"></span></p>
+        <p>Connection to Socket Server: <span id="spnStatus"></span></p>
     </div>
 
 
@@ -60,6 +60,15 @@
 
             var pins = [];
 
+        }
+
+        function GetStartData(){
+            
+            var alertData = [];
+
+            for(var i = 0; i < alertData.length; i++){
+                AddAlert(data);
+            }
         }
 
         function DisplayMapData() {

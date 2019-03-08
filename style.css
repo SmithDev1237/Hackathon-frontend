@@ -74,6 +74,60 @@
         animation-delay: 1.1s;
     }
 
+
+
+
+
+    .pinGreen {
+        width: 30px;
+        height: 30px;
+        border-radius: 50% 50% 50% 0;
+        background: green;
+        position: absolute;
+        transform: rotate(-45deg);
+        left: 50%;
+        top: 50%;
+        margin: -20px 0 0 -20px;
+    }
+    
+    .pinGreen:after {
+         content: "";
+         width: 14px;
+         height: 14px;
+         margin: 8px 0 0 8px;
+         background: #e6e6e6;
+         position: absolute;
+         border-radius: 50%;
+        }   
+    
+    
+    .pulseGreen {
+        background: green;
+        border-radius: 50%;
+        height: 14px;
+        width: 14px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: 11px 0px 0px -12px;
+        transform: rotateX(55deg);
+        z-index: -2;
+    }
+    
+    .pulseGreen:after {
+            content: "";
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            margin: -13px 0 0 -13px;
+            animation: pulsate 1s ease-out;
+            animation-iteration-count: infinite;
+            opacity: 0;
+            box-shadow: 0 0 1px 2px green;
+            animation-delay: 1.1s;
+        }
+
 @keyframes pulsate {
     0% {
         transform: scale(0.1, 0.1);
@@ -118,6 +172,17 @@ left:-50%;
 width:100px;
 
 }
+
+.markerNameGreen{
+    color:green;
+    z-index: 9999999;
+    
+    top: 75px;
+    font-weight: bold;
+    left:-50%;
+    width:100px;
+    
+    }
 
 #divStatus{
     overflow-y: scroll;
