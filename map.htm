@@ -5,131 +5,11 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <title>Status Monitor</title>
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <style>
-        .half {
-            width: 50%;
-            float: left;
-        }
-
-        .green {
-            color: green;
-        }
-
-        .red {
-            color: red;
-        }
-
-        #spnStatus {
-            font-weight: bold;
-        }
-
-        #myMap {
-            width: 100%;
-            height: 100%;
-        }
-        .pin {
-            width: 30px;
-            height: 30px;
-            border-radius: 50% 50% 50% 0;
-            background: red;
-            position: absolute;
-            transform: rotate(-45deg);
-            left: 50%;
-            top: 50%;
-            margin: -20px 0 0 -20px;
-        }
-
-.pin:after {
-             content: "";
-             width: 14px;
-             height: 14px;
-             margin: 8px 0 0 8px;
-             background: #e6e6e6;
-             position: absolute;
-             border-radius: 50%;
-            }
-
-.bounce {
-            animation-name: bounce;
-            animation-fill-mode: both;
-            animation-duration: 1s;
-        }
-
-.pulse {
-            background: red;
-            border-radius: 50%;
-            height: 14px;
-            width: 14px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin: 11px 0px 0px -12px;
-            transform: rotateX(55deg);
-            z-index: -2;
-        }
-
-.pulse:after {
-                content: "";
-                border-radius: 50%;
-                height: 40px;
-                width: 40px;
-                position: absolute;
-                margin: -13px 0 0 -13px;
-                animation: pulsate 1s ease-out;
-                animation-iteration-count: infinite;
-                opacity: 0;
-                box-shadow: 0 0 1px 2px red;
-                animation-delay: 1.1s;
-            }
-
-@keyframes pulsate {
-            0% {
-                transform: scale(0.1, 0.1);
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1.2, 1.2);
-                opacity: 0;
-            }
-                  }
-
-@keyframes bounce {
-            0% {
-                opacity: 0;
-                transform: translateY(-2000px) rotate(-45deg);
-            }
-
-            60% {
-                opacity: 1;
-                transform: translateY(30px) rotate(-45deg);
-            }
-
-            80% {
-                transform: translateY(-10px) rotate(-45deg);
-            }
-
-            100% {
-                transform: translateY(0) rotate(-45deg);
-  }}
-  .markerName{
-      color:red;
-      z-index: 9999999;
-      
-      top: 75px;
-      font-weight: bold;
-      left:-50%;
-      width:100px;
-      
-  }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -141,11 +21,10 @@
         <script type="text/javascript" src="socket.js"></script>
     </div>
     <div class="half">
-        <h2>Status</h2>
-        <p>Connected to Socket Server: <span id="spnStatus"></span></p>
+        <h2>Status</h2>        
         <div id="divStatus">
-            <table>
-                <thead>
+            <table class="table table-striped table-dark">
+                <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
                         <th>Status</th>
@@ -160,6 +39,7 @@
                 </tfoot>
             </table>
         </div>
+        <p>Connected to Socket Server: <span id="spnStatus"></span></p>
     </div>
 
 
@@ -168,12 +48,12 @@
 
         function DisplayMap() {
 
-            var defaultCenter = [-0.931182, 51.461451];
+            var defaultCenter = [-1.4746, 52.9225];
 
             map = new atlas.Map('myMap', {
                 'subscription-key': 'N9su6yeDeyLNZ-f7edNLgXlBED2PLhbqLDmqUQENfOI',
                 center: defaultCenter,
-                zoom: 6,
+                zoom: 5,
                 style: "grayscale_dark"
 
             });
